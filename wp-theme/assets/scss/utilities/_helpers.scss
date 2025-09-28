@@ -1,0 +1,190 @@
+// Utility Classes - Cannabis Retro-Futurism
+
+// Display utilities
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.d-grid { display: grid !important; }
+
+// Responsive display utilities
+@media (max-width: 768px) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+}
+
+@media (max-width: 480px) {
+  .d-sm-none { display: none !important; }
+  .d-sm-block { display: block !important; }
+  .d-sm-flex { display: flex !important; }
+}
+
+// Spacing utilities
+$spacers: (
+  0: 0,
+  1: var(--skyworks-space-xs),
+  2: var(--skyworks-space-sm),
+  3: var(--skyworks-space-md),
+  4: var(--skyworks-space-lg),
+  5: var(--skyworks-space-xl),
+  6: var(--skyworks-space-xxl),
+  7: var(--skyworks-space-xxxl)
+);
+
+@each $prop, $abbrev in (margin: m, padding: p) {
+  @each $size, $length in $spacers {
+    .#{$abbrev}-#{$size} { #{$prop}: #{$length} !important; }
+    .#{$abbrev}t-#{$size} { #{$prop}-top: #{$length} !important; }
+    .#{$abbrev}r-#{$size} { #{$prop}-right: #{$length} !important; }
+    .#{$abbrev}b-#{$size} { #{$prop}-bottom: #{$length} !important; }
+    .#{$abbrev}l-#{$size} { #{$prop}-left: #{$length} !important; }
+    .#{$abbrev}x-#{$size} {
+      #{$prop}-left: #{$length} !important;
+      #{$prop}-right: #{$length} !important;
+    }
+    .#{$abbrev}y-#{$size} {
+      #{$prop}-top: #{$length} !important;
+      #{$prop}-bottom: #{$length} !important;
+    }
+  }
+}
+
+// Auto margins
+.m-auto { margin: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.my-auto {
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+}
+
+// Position utilities
+.position-static { position: static !important; }
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed { position: fixed !important; }
+.position-sticky { position: sticky !important; }
+
+// Width and height utilities
+.w-100 { width: 100% !important; }
+.w-auto { width: auto !important; }
+.h-100 { height: 100% !important; }
+.h-auto { height: auto !important; }
+.mw-100 { max-width: 100% !important; }
+.mh-100 { max-height: 100% !important; }
+
+// Overflow utilities
+.overflow-hidden { overflow: hidden !important; }
+.overflow-visible { overflow: visible !important; }
+.overflow-auto { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }
+
+// Border utilities
+.border { border: 1px solid var(--skyworks-primary) !important; }
+.border-top { border-top: 1px solid var(--skyworks-primary) !important; }
+.border-right { border-right: 1px solid var(--skyworks-primary) !important; }
+.border-bottom { border-bottom: 1px solid var(--skyworks-primary) !important; }
+.border-left { border-left: 1px solid var(--skyworks-primary) !important; }
+.border-0 { border: 0 !important; }
+
+// Border radius utilities
+.rounded { border-radius: var(--skyworks-radius-md) !important; }
+.rounded-sm { border-radius: var(--skyworks-radius-sm) !important; }
+.rounded-lg { border-radius: var(--skyworks-radius-lg) !important; }
+.rounded-xl { border-radius: var(--skyworks-radius-xl) !important; }
+.rounded-circle { border-radius: 50% !important; }
+.rounded-0 { border-radius: 0 !important; }
+
+// Shadow utilities
+.shadow { box-shadow: var(--skyworks-shadow-md) !important; }
+.shadow-sm { box-shadow: var(--skyworks-shadow-sm) !important; }
+.shadow-lg { box-shadow: var(--skyworks-shadow-lg) !important; }
+.shadow-neon { box-shadow: var(--skyworks-shadow-neon) !important; }
+.shadow-none { box-shadow: none !important; }
+
+// Opacity utilities
+.opacity-0 { opacity: 0 !important; }
+.opacity-25 { opacity: 0.25 !important; }
+.opacity-50 { opacity: 0.5 !important; }
+.opacity-75 { opacity: 0.75 !important; }
+.opacity-100 { opacity: 1 !important; }
+
+// Cannabis-specific utilities
+.neon-glow {
+  @include neon-glow(var(--skyworks-primary));
+}
+
+.neon-glow-secondary {
+  @include neon-glow(var(--skyworks-secondary));
+}
+
+.neon-glow-accent {
+  @include neon-glow(var(--skyworks-accent));
+}
+
+.neon-border {
+  @include neon-box(var(--skyworks-primary));
+}
+
+.glass-effect {
+  @include glass-morphism();
+}
+
+.cyberpunk-border {
+  @include cyberpunk-border();
+}
+
+.retro-gradient {
+  @include retro-gradient();
+}
+
+// Animation utilities
+.fade-in { opacity: 0; }
+.slide-in-left { transform: translateX(-50px); opacity: 0; }
+.slide-in-right { transform: translateX(50px); opacity: 0; }
+.scale-on-scroll { transform: scale(0.8); opacity: 0; }
+.parallax { will-change: transform; }
+.hover-glow { transition: filter var(--skyworks-transition-medium); }
+.text-reveal { overflow: hidden; }
+
+// Cannabis leaf decorations
+.cannabis-decoration {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c-2 0-4 2-4 4 0 1 1 2 2 3-1 1-2 2-2 3 0 2 2 4 4 4s4-2 4-4c0-1-1-2-2-3 1-1 2-2 2-3 0-2-2-4-4-4z' fill='%2300ff88'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    opacity: 0.3;
+  }
+}
+
+// Responsive utilities
+@media (max-width: 768px) {
+  .mobile-hidden { display: none !important; }
+  .desktop-hidden { display: block !important; }
+}
+
+@media (min-width: 769px) {
+  .mobile-hidden { display: block !important; }
+  .desktop-hidden { display: none !important; }
+}
+
+// Print utilities
+@media print {
+  .print-hidden { display: none !important; }
+}

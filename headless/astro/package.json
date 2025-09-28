@@ -1,0 +1,36 @@
+{
+  "name": "skyworks-astro",
+  "version": "1.0.0",
+  "description": "Astro implementation of SkyWorks Cannabis theme",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/react": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
+    "astro": "^3.0.0",
+    "gsap": "^3.12.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.57.0",
+    "tailwindcss": "^3.0.24"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6"
+  },
+  "keywords": [
+    "astro",
+    "cannabis",
+    "retro-futurism",
+    "headless",
+    "wordpress"
+  ],
+  "author": "John Dough",
+  "license": "MIT"
+}

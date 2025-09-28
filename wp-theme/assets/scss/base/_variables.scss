@@ -1,0 +1,131 @@
+// Brand Colors - Retro-Futurism Cannabis Theme
+:root {
+  // Primary brand colors
+  --skyworks-primary: #00ff88;     // Neon green
+  --skyworks-secondary: #ff0080;   // Hot pink
+  --skyworks-accent: #ffff00;      // Electric yellow
+  
+  // Extended palette
+  --skyworks-neon-blue: #00d4ff;
+  --skyworks-purple: #8a2be2;
+  --skyworks-orange: #ff4500;
+  
+  // Neutral colors
+  --skyworks-dark: #0a0a0a;
+  --skyworks-darker: #050505;
+  --skyworks-light: #f0f0f0;
+  --skyworks-gray: #333333;
+  --skyworks-mid-gray: #666666;
+  --skyworks-light-gray: #999999;
+  
+  // Gradients
+  --skyworks-gradient-primary: linear-gradient(135deg, var(--skyworks-primary) 0%, var(--skyworks-secondary) 100%);
+  --skyworks-gradient-neon: linear-gradient(90deg, var(--skyworks-neon-blue) 0%, var(--skyworks-primary) 50%, var(--skyworks-accent) 100%);
+  --skyworks-gradient-dark: linear-gradient(180deg, var(--skyworks-darker) 0%, var(--skyworks-dark) 100%);
+  
+  // Typography
+  --skyworks-font-primary: 'Orbitron', sans-serif;
+  --skyworks-font-secondary: 'Exo', sans-serif;
+  --skyworks-font-body: 'Inter', sans-serif;
+  
+  // Spacing
+  --skyworks-space-xs: 0.25rem;   // 4px
+  --skyworks-space-sm: 0.5rem;    // 8px
+  --skyworks-space-md: 1rem;      // 16px
+  --skyworks-space-lg: 1.5rem;    // 24px
+  --skyworks-space-xl: 2rem;      // 32px
+  --skyworks-space-xxl: 3rem;     // 48px
+  --skyworks-space-xxxl: 4rem;    // 64px
+  
+  // Border radius
+  --skyworks-radius-sm: 4px;
+  --skyworks-radius-md: 8px;
+  --skyworks-radius-lg: 16px;
+  --skyworks-radius-xl: 24px;
+  --skyworks-radius-full: 50%;
+  
+  // Shadows
+  --skyworks-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --skyworks-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --skyworks-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --skyworks-shadow-neon: 0 0 20px var(--skyworks-primary);
+  --skyworks-shadow-neon-secondary: 0 0 20px var(--skyworks-secondary);
+  
+  // Transitions
+  --skyworks-transition-fast: 150ms ease-in-out;
+  --skyworks-transition-medium: 250ms ease-in-out;
+  --skyworks-transition-slow: 500ms ease-in-out;
+  
+  // Breakpoints
+  --skyworks-bp-xs: 480px;
+  --skyworks-bp-sm: 768px;
+  --skyworks-bp-md: 1024px;
+  --skyworks-bp-lg: 1200px;
+  --skyworks-bp-xl: 1440px;
+  
+  // Z-index layers
+  --skyworks-z-base: 1;
+  --skyworks-z-dropdown: 10;
+  --skyworks-z-sticky: 20;
+  --skyworks-z-fixed: 30;
+  --skyworks-z-modal: 40;
+  --skyworks-z-tooltip: 50;
+}
+
+// Cannabis-specific color variations
+$cannabis-green: #228B22;
+$cannabis-light-green: #90EE90;
+$cannabis-dark-green: #006400;
+
+// Neon glow effects
+@mixin neon-glow($color: #00ff88, $intensity: 1) {
+  text-shadow: 0 0 5px $color,
+               0 0 10px $color,
+               0 0 15px $color,
+               0 0 20px $color,
+               0 0 35px $color,
+               0 0 40px $color;
+}
+
+@mixin neon-box($color: #00ff88) {
+  box-shadow: 0 0 5px $color,
+              0 0 10px $color,
+              0 0 15px $color,
+              0 0 20px $color,
+              inset 0 0 5px rgba($color, 0.1);
+}
+
+// Retro-futuristic gradients
+@mixin retro-gradient($direction: 135deg) {
+  background: linear-gradient($direction, 
+    var(--skyworks-primary) 0%, 
+    var(--skyworks-secondary) 25%, 
+    var(--skyworks-purple) 50%, 
+    var(--skyworks-neon-blue) 75%, 
+    var(--skyworks-accent) 100%);
+}
+
+// Glass morphism effect
+@mixin glass-morphism($blur: 10px, $opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+// Cyberpunk border effect
+@mixin cyberpunk-border($color: #00ff88) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, $color 50%, transparent 70%);
+    padding: 2px;
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: subtract;
+  }
+}

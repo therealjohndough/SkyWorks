@@ -1,0 +1,110 @@
+// Footer - Cannabis Retro-Futurism
+.skyworks-footer {
+  background: var(--skyworks-darker);
+  border-top: 1px solid rgba(var(--skyworks-primary), 0.3);
+  position: relative;
+  overflow: hidden;
+  
+  // Animated background grid
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: grid-move 25s linear infinite;
+    pointer-events: none;
+  }
+  
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--skyworks-space-xl);
+    padding: var(--skyworks-space-xl) 0;
+    align-items: center;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--skyworks-space-lg);
+    }
+  }
+  
+  .footer-brand {
+    .footer-logo img {
+      height: 50px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3));
+      margin-bottom: var(--skyworks-space-md);
+    }
+    
+    .footer-tagline {
+      color: var(--skyworks-light-gray);
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+  
+  .footer-navigation {
+    justify-self: end;
+    
+    @media (max-width: 768px) {
+      justify-self: center;
+    }
+    
+    .footer-menu {
+      display: flex;
+      gap: var(--skyworks-space-lg);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      
+      @media (max-width: 480px) {
+        flex-direction: column;
+        gap: var(--skyworks-space-md);
+      }
+      
+      a {
+        color: var(--skyworks-light-gray);
+        font-family: var(--skyworks-font-secondary);
+        font-weight: 400;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        letter-spacing: 0.05em;
+        transition: var(--skyworks-transition-fast);
+        
+        &:hover {
+          color: var(--skyworks-primary);
+          text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
+        }
+      }
+    }
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(var(--skyworks-primary), 0.2);
+    padding: var(--skyworks-space-lg) 0;
+    text-align: center;
+    
+    .copyright {
+      color: var(--skyworks-mid-gray);
+      font-size: 0.875rem;
+      margin: 0;
+      
+      @media (max-width: 480px) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

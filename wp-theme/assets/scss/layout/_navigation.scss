@@ -1,0 +1,212 @@
+// Navigation - Cannabis Retro-Futurism
+.main-navigation {
+  display: flex;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--skyworks-darker);
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: var(--skyworks-transition-medium);
+    z-index: var(--skyworks-z-fixed);
+    
+    &.is-open {
+      transform: translateX(0);
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--skyworks-gradient-dark);
+      opacity: 0.8;
+    }
+  }
+  
+  .primary-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--skyworks-space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: var(--skyworks-space-xl);
+      position: relative;
+      z-index: 1;
+    }
+    
+    li {
+      position: relative;
+      
+      &.menu-item-has-children {
+        .sub-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          min-width: 220px;
+          background: var(--skyworks-darker);
+          border: 1px solid var(--skyworks-primary);
+          border-radius: var(--skyworks-radius-md);
+          padding: var(--skyworks-space-sm) 0;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+          transition: var(--skyworks-transition-medium);
+          z-index: var(--skyworks-z-dropdown);
+          @include neon-box(var(--skyworks-primary));
+          
+          @media (max-width: 768px) {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            margin-top: var(--skyworks-space-md);
+            border: none;
+            box-shadow: none;
+            background: transparent;
+            padding: 0;
+          }
+          
+          li {
+            a {
+              display: block;
+              padding: var(--skyworks-space-sm) var(--skyworks-space-md);
+              font-size: 0.9rem;
+              color: var(--skyworks-light-gray);
+              transition: var(--skyworks-transition-fast);
+              
+              &:hover {
+                color: var(--skyworks-primary);
+                background: rgba(var(--skyworks-primary), 0.1);
+                padding-left: calc(var(--skyworks-space-md) + 5px);
+              }
+            }
+          }
+        }
+        
+        &:hover .sub-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        
+        > a::after {
+          content: '▼';
+          margin-left: var(--skyworks-space-xs);
+          font-size: 0.8em;
+          transition: var(--skyworks-transition-fast);
+        }
+        
+        &:hover > a::after {
+          transform: rotate(180deg);
+        }
+      }
+      
+      a {
+        font-family: var(--skyworks-font-secondary);
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--skyworks-light);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: var(--skyworks-space-sm) 0;
+        position: relative;
+        transition: var(--skyworks-transition-fast);
+        
+        @media (max-width: 768px) {
+          font-size: 1.5rem;
+          color: var(--skyworks-primary);
+        }
+        
+        // Neon underline effect
+        &::before {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--skyworks-gradient-primary);
+          transition: var(--skyworks-transition-medium);
+          border-radius: 1px;
+        }
+        
+        &:hover {
+          color: var(--skyworks-primary);
+          
+          &::before {
+            width: 100%;
+          }
+          
+          @media (max-width: 768px) {
+            @include neon-glow(var(--skyworks-primary), 0.8);
+          }
+        }
+        
+        // Active state
+        &.active,
+        &[aria-current="page"] {
+          color: var(--skyworks-primary);
+          
+          &::before {
+            width: 100%;
+            background: var(--skyworks-primary);
+          }
+        }
+      }
+    }
+  }
+  
+  // Cannabis leaf decoration
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c-2 0-4 2-4 4 0 1 1 2 2 3-1 1-2 2-2 3 0 2 2 4 4 4s4-2 4-4c0-1-1-2-2-3 1-1 2-2 2-3 0-2-2-4-4-4z' fill='%2300ff88'/%3E%3C/svg%3E") no-repeat center;
+    background-size: contain;
+    opacity: 0.3;
+    animation: leaf-glow 3s ease-in-out infinite;
+    
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+// Body scroll lock when mobile menu is open
+body.menu-open {
+  overflow: hidden;
+  
+  @media (min-width: 769px) {
+    overflow: visible;
+  }
+}
+
+// Navigation animations
+@keyframes leaf-glow {
+  0%, 100% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.3));
+  }
+  50% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.6));
+  }
+}

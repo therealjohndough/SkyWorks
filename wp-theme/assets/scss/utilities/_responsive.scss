@@ -1,0 +1,204 @@
+// Responsive Breakpoints and Media Queries
+
+// Breakpoint mixins
+@mixin mobile-only {
+  @media (max-width: 479px) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: 480px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: 480px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin large-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large-only {
+  @media (min-width: 1024px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin xlarge-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin xxlarge-up {
+  @media (min-width: 1440px) {
+    @content;
+  }
+}
+
+// Responsive text sizing
+.responsive-text {
+  &--small {
+    font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  }
+  
+  &--medium {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+  }
+  
+  &--large {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+  
+  &--xlarge {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  &--xxlarge {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  
+  &--hero {
+    font-size: clamp(3rem, 8vw, 6rem);
+  }
+}
+
+// Responsive spacing
+.responsive-spacing {
+  &--small {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  &--medium {
+    padding: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  &--large {
+    padding: clamp(2rem, 5vw, 3rem);
+  }
+  
+  &--xlarge {
+    padding: clamp(3rem, 6vw, 4rem);
+  }
+}
+
+// Container queries (future-proof)
+@supports (container-type: inline-size) {
+  .responsive-container {
+    container-type: inline-size;
+    
+    .responsive-content {
+      @container (min-width: 300px) {
+        flex-direction: column;
+      }
+      
+      @container (min-width: 600px) {
+        flex-direction: row;
+      }
+    }
+  }
+}
+
+// Responsive visibility
+@include mobile-only {
+  .hide-mobile { display: none !important; }
+}
+
+@include tablet-up {
+  .show-mobile { display: none !important; }
+}
+
+@include desktop-up {
+  .hide-desktop { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .show-desktop { display: none !important; }
+}
+
+// Responsive grid adjustments
+.responsive-grid {
+  display: grid;
+  gap: var(--skyworks-space-md);
+  grid-template-columns: 1fr;
+  
+  @include tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--skyworks-space-lg);
+  }
+  
+  @include desktop-up {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @include large-up {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--skyworks-space-xl);
+  }
+}
+
+// High DPI / Retina display optimizations
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .retina-optimize {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+// Dark mode preferences
+@media (prefers-color-scheme: dark) {
+  :root {
+    // Already optimized for dark theme
+    // Enhance neon effects in dark mode
+    --skyworks-shadow-neon: 0 0 30px var(--skyworks-primary);
+  }
+}
+
+// High contrast preferences
+@media (prefers-contrast: high) {
+  :root {
+    --skyworks-primary: #00ff00;
+    --skyworks-secondary: #ff00ff;
+    --skyworks-accent: #ffff00;
+  }
+  
+  .btn {
+    border-width: 3px;
+  }
+  
+  .neon-glow {
+    text-shadow: none;
+    color: var(--skyworks-primary);
+    font-weight: bold;
+  }
+}
