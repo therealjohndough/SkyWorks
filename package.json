@@ -1,0 +1,41 @@
+{
+  "name": "skyworks-theme",
+  "version": "1.0.0",
+  "description": "Centralized hub for all Skyworld Cannabis brand assets, motion-ready SVGs, and web UI components",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode=development --watch",
+    "build": "webpack --mode=production",
+    "scss": "sass --watch assets/scss:assets/css",
+    "lint:css": "stylelint 'assets/scss/**/*.scss'",
+    "lint:js": "eslint assets/js/**/*.js"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "cannabis",
+    "retro-futurism",
+    "svg",
+    "gsap",
+    "scss"
+  ],
+  "author": "John Dough",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "babel-loader": "^9.1.0",
+    "css-loader": "^6.7.0",
+    "eslint": "^8.30.0",
+    "mini-css-extract-plugin": "^2.7.0",
+    "sass": "^1.57.0",
+    "sass-loader": "^13.2.0",
+    "stylelint": "^14.16.0",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "gsap": "^3.12.0"
+  }
+}

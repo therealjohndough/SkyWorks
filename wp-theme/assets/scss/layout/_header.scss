@@ -1,0 +1,138 @@
+// Header - Cannabis Retro-Futurism
+.skyworks-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--skyworks-z-fixed);
+  background: rgba(var(--skyworks-darker), 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(var(--skyworks-primary), 0.2);
+  transition: var(--skyworks-transition-medium);
+  
+  &.scrolled {
+    background: rgba(var(--skyworks-darker), 0.95);
+    border-bottom-color: rgba(var(--skyworks-primary), 0.4);
+    @include neon-box(var(--skyworks-primary));
+  }
+  
+  &.hidden {
+    transform: translateY(-100%);
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--skyworks-space-md);
+    padding-bottom: var(--skyworks-space-md);
+  }
+  
+  .header-brand {
+    display: flex;
+    align-items: center;
+    z-index: var(--skyworks-z-fixed) + 1;
+    
+    .custom-logo-wrapper {
+      max-width: 180px;
+      
+      img {
+        height: 40px;
+        width: auto;
+        filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3));
+        transition: var(--skyworks-transition-fast);
+        
+        &:hover {
+          filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.6));
+          transform: scale(1.05);
+        }
+      }
+    }
+    
+    .site-title {
+      margin: 0;
+      
+      a {
+        font-family: var(--skyworks-font-primary);
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--skyworks-primary);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: var(--skyworks-transition-fast);
+        
+        &:hover {
+          @include neon-glow(var(--skyworks-primary), 0.8);
+        }
+      }
+    }
+  }
+  
+  // Mobile menu toggle
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border: 2px solid var(--skyworks-primary);
+    border-radius: var(--skyworks-radius-md);
+    background: transparent;
+    cursor: pointer;
+    transition: var(--skyworks-transition-fast);
+    z-index: var(--skyworks-z-fixed) + 1;
+    
+    @media (max-width: 768px) {
+      display: flex;
+    }
+    
+    &:hover {
+      @include neon-box(var(--skyworks-primary));
+      transform: scale(1.05);
+    }
+    
+    .hamburger {
+      position: relative;
+      width: 20px;
+      height: 2px;
+      background: var(--skyworks-primary);
+      transition: var(--skyworks-transition-fast);
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 2px;
+        background: var(--skyworks-primary);
+        transition: var(--skyworks-transition-fast);
+      }
+      
+      &::before {
+        top: -6px;
+      }
+      
+      &::after {
+        top: 6px;
+      }
+    }
+    
+    &[aria-expanded="true"] {
+      .hamburger {
+        background: transparent;
+        
+        &::before {
+          top: 0;
+          transform: rotate(45deg);
+        }
+        
+        &::after {
+          top: 0;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}

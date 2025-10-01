@@ -1,0 +1,322 @@
+// Retro-Futuristic Button Components
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--skyworks-space-md) var(--skyworks-space-lg);
+  font-family: var(--skyworks-font-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--skyworks-primary);
+  border-radius: var(--skyworks-radius-md);
+  background: transparent;
+  color: var(--skyworks-primary);
+  cursor: pointer;
+  transition: var(--skyworks-transition-medium);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--skyworks-gradient-primary);
+    transition: var(--skyworks-transition-medium);
+    z-index: -1;
+  }
+  
+  &:hover {
+    color: var(--skyworks-dark);
+    transform: translateY(-2px);
+    @include neon-box(var(--skyworks-primary));
+    
+    &::before {
+      left: 0;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  // Button variants
+  &--primary {
+    background: var(--skyworks-gradient-primary);
+    color: var(--skyworks-dark);
+    border-color: var(--skyworks-primary);
+    
+    &:hover {
+      @include neon-box(var(--skyworks-primary));
+      transform: translateY(-3px) scale(1.02);
+    }
+  }
+  
+  &--secondary {
+    border-color: var(--skyworks-secondary);
+    color: var(--skyworks-secondary);
+    
+    &::before {
+      background: var(--skyworks-secondary);
+    }
+    
+    &:hover {
+      @include neon-box(var(--skyworks-secondary));
+    }
+  }
+  
+  &--accent {
+    border-color: var(--skyworks-accent);
+    color: var(--skyworks-accent);
+    
+    &::before {
+      background: var(--skyworks-accent);
+    }
+    
+    &:hover {
+      @include neon-box(var(--skyworks-accent));
+      color: var(--skyworks-dark);
+    }
+  }
+  
+  &--ghost {
+    background: transparent;
+    border: 1px solid rgba(var(--skyworks-primary), 0.3);
+    color: var(--skyworks-primary);
+    
+    &:hover {
+      background: rgba(var(--skyworks-primary), 0.1);
+      border-color: var(--skyworks-primary);
+      @include neon-glow(var(--skyworks-primary), 0.3);
+    }
+  }
+  
+  &--neon {
+    background: var(--skyworks-dark);
+    border: 2px solid var(--skyworks-primary);
+    color: var(--skyworks-primary);
+    @include neon-glow(var(--skyworks-primary), 0.5);
+    
+    &:hover {
+      @include neon-glow(var(--skyworks-primary), 1);
+      animation: neon-flicker 0.15s infinite alternate;
+    }
+  }
+  
+  // Size variants
+  &--small {
+    padding: var(--skyworks-space-sm) var(--skyworks-space-md);
+    font-size: 0.875rem;
+  }
+  
+  &--large {
+    padding: var(--skyworks-space-lg) var(--skyworks-space-xxl);
+    font-size: 1.125rem;
+  }
+  
+  // Icon buttons
+  &--icon {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border-radius: var(--skyworks-radius-full);
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  // Loading state
+  &--loading {
+    pointer-events: none;
+    opacity: 0.7;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: button-loading 1s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  // Disabled state
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(1);
+  }
+}
+
+// Cyberpunk button with animated border
+.btn-cyberpunk {
+  @extend .btn;
+  position: relative;
+  background: var(--skyworks-dark);
+  border: none;
+  padding: calc(var(--skyworks-space-md) + 2px) calc(var(--skyworks-space-lg) + 2px);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--skyworks-gradient-neon);
+    border-radius: inherit;
+    z-index: -2;
+    animation: border-rotate 3s linear infinite;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--skyworks-dark);
+    border-radius: calc(var(--skyworks-radius-md) - 2px);
+    z-index: -1;
+  }
+}
+
+// Glitch button effect
+.btn-glitch {
+  @extend .btn;
+  position: relative;
+  
+  &:hover {
+    animation: glitch 0.3s;
+  }
+  
+  &::before,
+  &::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  &::before {
+    color: var(--skyworks-secondary);
+    z-index: -1;
+  }
+  
+  &::after {
+    color: var(--skyworks-accent);
+    z-index: -2;
+  }
+  
+  &:hover::before {
+    animation: glitch-1 0.3s;
+  }
+  
+  &:hover::after {
+    animation: glitch-2 0.3s;
+  }
+}
+
+// Button group
+.btn-group {
+  display: flex;
+  gap: var(--skyworks-space-sm);
+  
+  &--vertical {
+    flex-direction: column;
+  }
+  
+  &--center {
+    justify-content: center;
+  }
+  
+  .btn {
+    flex: 1;
+    
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:last-child {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &:not(:first-child):not(:last-child) {
+      border-radius: 0;
+    }
+  }
+}
+
+// Animations
+@keyframes neon-flicker {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--skyworks-primary),
+                 0 0 10px var(--skyworks-primary),
+                 0 0 15px var(--skyworks-primary);
+  }
+  50% {
+    text-shadow: 0 0 2px var(--skyworks-primary),
+                 0 0 5px var(--skyworks-primary),
+                 0 0 8px var(--skyworks-primary);
+  }
+}
+
+@keyframes button-loading {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes border-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-1 {
+  0% { opacity: 0; transform: translate(0); }
+  10% { opacity: 1; transform: translate(-2px, -2px); }
+  20% { opacity: 1; transform: translate(2px, 2px); }
+  30% { opacity: 1; transform: translate(-2px, 2px); }
+  40% { opacity: 1; transform: translate(2px, -2px); }
+  50% { opacity: 1; transform: translate(0); }
+  100% { opacity: 0; transform: translate(0); }
+}
+
+@keyframes glitch-2 {
+  0% { opacity: 0; transform: translate(0); }
+  5% { opacity: 1; transform: translate(2px, 2px); }
+  15% { opacity: 1; transform: translate(-2px, -2px); }
+  25% { opacity: 1; transform: translate(2px, -2px); }
+  35% { opacity: 1; transform: translate(-2px, 2px); }
+  45% { opacity: 1; transform: translate(0); }
+  100% { opacity: 0; transform: translate(0); }
+}

@@ -1,0 +1,352 @@
+// Hero Section - Cannabis Retro-Futurism
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--skyworks-gradient-dark);
+  
+  // Background elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(255, 255, 0, 0.05) 0%, transparent 50%);
+    z-index: 1;
+  }
+  
+  // Grid overlay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+    z-index: 2;
+  }
+  
+  .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+    z-index: 0;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--skyworks-gradient-dark);
+      opacity: 0.7;
+    }
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 1000px;
+    padding: 0 var(--skyworks-space-lg);
+    
+    @media (max-width: 768px) {
+      padding: 0 var(--skyworks-space-md);
+    }
+  }
+  
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    font-family: var(--skyworks-font-primary);
+    line-height: 1.1;
+    margin-bottom: var(--skyworks-space-lg);
+    background: var(--skyworks-gradient-neon);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    position: relative;
+    
+    // Animated underline
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--skyworks-gradient-primary);
+      border-radius: 2px;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    // Text shadow for depth
+    text-shadow: 
+      0 0 10px rgba(0, 255, 136, 0.5),
+      0 0 20px rgba(0, 255, 136, 0.3),
+      0 0 30px rgba(0, 255, 136, 0.1);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    font-weight: 400;
+    font-family: var(--skyworks-font-secondary);
+    color: var(--skyworks-light-gray);
+    margin-bottom: var(--skyworks-space-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    
+    // Typewriter cursor
+    &::after {
+      content: '|';
+      color: var(--skyworks-primary);
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: var(--skyworks-space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  // Floating particles
+  .hero-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--skyworks-primary);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    &:nth-child(2n) {
+      background: var(--skyworks-secondary);
+      animation-delay: -2s;
+      animation-duration: 8s;
+      
+      &::before {
+        background: radial-gradient(circle, rgba(255, 0, 128, 0.4) 0%, transparent 70%);
+      }
+    }
+    
+    &:nth-child(3n) {
+      background: var(--skyworks-accent);
+      animation-delay: -4s;
+      animation-duration: 10s;
+      
+      &::before {
+        background: radial-gradient(circle, rgba(255, 255, 0, 0.4) 0%, transparent 70%);
+      }
+    }
+  }
+  
+  // Cannabis leaf floating animation
+  .cannabis-leaf {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.1;
+    animation: leaf-float 12s ease-in-out infinite;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: var(--skyworks-primary);
+      filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.5));
+    }
+    
+    &:nth-child(2) {
+      animation-delay: -4s;
+      top: 20%;
+      right: 10%;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: -8s;
+      bottom: 20%;
+      left: 10%;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  // Scroll indicator
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--skyworks-space-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--skyworks-space-sm);
+    color: var(--skyworks-primary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    
+    .scroll-arrow {
+      width: 2px;
+      height: 30px;
+      background: var(--skyworks-primary);
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 8px solid var(--skyworks-primary);
+        animation: bounce 2s ease-in-out infinite;
+      }
+    }
+  }
+  
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: clamp(2rem, 10vw, 4rem);
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+    
+    .cannabis-leaf {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    &::after {
+      background-size: 25px 25px;
+    }
+    
+    .hero-content {
+      padding: 0 var(--skyworks-space-sm);
+    }
+  }
+}
+
+// Hero animations
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--skyworks-primary),
+                0 0 10px var(--skyworks-primary);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--skyworks-primary),
+                0 0 20px var(--skyworks-primary),
+                0 0 30px var(--skyworks-primary);
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-40px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg);
+    opacity: 1;
+  }
+}
+
+@keyframes leaf-float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-60px) rotate(0deg) scale(1);
+  }
+  75% {
+    transform: translateY(-30px) rotate(-10deg) scale(0.9);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}

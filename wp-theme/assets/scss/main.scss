@@ -1,0 +1,21 @@
+// Base styles
+@import 'base/variables';    // Import variables first (contains mixins)
+@import 'base/reset';
+@import 'base/typography';
+
+// Layout components
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/navigation';
+
+// UI components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/hero';
+@import 'components/animations';
+
+// Utilities
+@import 'utilities/helpers';
+@import 'utilities/responsive';

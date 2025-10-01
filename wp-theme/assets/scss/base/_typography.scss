@@ -1,0 +1,178 @@
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Typography hierarchy
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--skyworks-font-primary);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--skyworks-space-md);
+  color: var(--skyworks-light);
+  
+  // Neon glow effect for headings
+  &.neon {
+    @include neon-glow(var(--skyworks-primary));
+  }
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  
+  &.hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    background: var(--skyworks-gradient-neon);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+h4 {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-weight: 600;
+}
+
+h6 {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Body text
+p {
+  font-family: var(--skyworks-font-body);
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+  line-height: 1.7;
+  margin-bottom: var(--skyworks-space-md);
+  color: var(--skyworks-light-gray);
+}
+
+// Large text
+.text-large {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 500;
+}
+
+// Small text
+.text-small {
+  font-size: clamp(0.875rem, 1.2vw, 1rem);
+  color: var(--skyworks-mid-gray);
+}
+
+// Links
+a {
+  color: var(--skyworks-primary);
+  transition: var(--skyworks-transition-fast);
+  
+  &:hover {
+    color: var(--skyworks-secondary);
+    text-shadow: 0 0 5px currentColor;
+  }
+  
+  &.neon-link {
+    @include neon-glow(var(--skyworks-primary), 0.5);
+    
+    &:hover {
+      @include neon-glow(var(--skyworks-secondary), 0.8);
+    }
+  }
+}
+
+// Lists
+ul, ol {
+  margin-bottom: var(--skyworks-space-md);
+  padding-left: var(--skyworks-space-lg);
+}
+
+li {
+  margin-bottom: var(--skyworks-space-sm);
+  color: var(--skyworks-light-gray);
+}
+
+// Blockquotes
+blockquote {
+  font-family: var(--skyworks-font-secondary);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: var(--skyworks-primary);
+  border-left: 3px solid var(--skyworks-primary);
+  padding-left: var(--skyworks-space-lg);
+  margin: var(--skyworks-space-xl) 0;
+  position: relative;
+  
+  &::before {
+    content: '"';
+    font-size: 3rem;
+    color: var(--skyworks-secondary);
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+  }
+}
+
+// Code
+code {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-size: 0.9em;
+  background: rgba(var(--skyworks-primary), 0.1);
+  color: var(--skyworks-primary);
+  padding: 0.2em 0.4em;
+  border-radius: var(--skyworks-radius-sm);
+  border: 1px solid rgba(var(--skyworks-primary), 0.3);
+}
+
+pre {
+  background: var(--skyworks-dark);
+  color: var(--skyworks-light);
+  padding: var(--skyworks-space-lg);
+  border-radius: var(--skyworks-radius-md);
+  border: 1px solid var(--skyworks-primary);
+  overflow-x: auto;
+  margin-bottom: var(--skyworks-space-md);
+  
+  code {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+}
+
+// Text utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize { text-transform: capitalize; }
+
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+.font-regular { font-weight: 400; }
+.font-light { font-weight: 300; }
+
+.text-primary { color: var(--skyworks-primary); }
+.text-secondary { color: var(--skyworks-secondary); }
+.text-accent { color: var(--skyworks-accent); }
+.text-light { color: var(--skyworks-light); }
+.text-gray { color: var(--skyworks-mid-gray); }
