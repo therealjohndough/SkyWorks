@@ -1,0 +1,556 @@
+/**
+ * Product Page Components
+ * 
+ * Modern two-column product page styling matching homepage aesthetic
+ */
+
+// Product Page Container
+.skyworld-product-page {
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+// Product Container
+.product-container {
+    max-width: 1400px;
+    margin: 120px auto 80px;
+    padding: 0 50px;
+    
+    @media (max-width: 768px) {
+        padding: 0 20px;
+        margin: 100px auto 60px;
+    }
+}
+
+// Breadcrumb Navigation
+.breadcrumb {
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 14px;
+    
+    a {
+        color: #666;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        
+        &:hover {
+            color: #FF8C00;
+        }
+    }
+    
+    span {
+        margin: 0 10px;
+        
+        &.current {
+            color: #FF8C00;
+        }
+    }
+}
+
+// Product Main Grid
+.product-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    
+    @media (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+// Product Image Section
+.product-image-section {
+    position: sticky;
+    top: 120px;
+    height: fit-content;
+    
+    @media (max-width: 1024px) {
+        position: relative;
+        top: 0;
+    }
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border: 2px solid #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+    }
+    
+    .placeholder-image {
+        text-align: center;
+        color: #666;
+    }
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    background: #1a1a1a;
+    border: 2px solid #222;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    &:hover,
+    &.active {
+        border-color: #FF8C00;
+        transform: scale(1.05);
+    }
+}
+
+// Product Info Section
+.product-info {
+    padding-top: 20px;
+}
+
+.product-title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #FF8C00;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    @media (max-width: 768px) {
+        font-size: 36px;
+    }
+}
+
+.product-subtitle {
+    font-size: 18px;
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+// Product Effects
+.product-effects {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.effect-badge {
+    padding: 10px 20px;
+    background: rgba(255, 140, 0, 0.1);
+    border: 2px solid #FF8C00;
+    color: #FF8C00;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+// Detail Sections
+.detail-section {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    padding: 30px;
+    margin-bottom: 20px;
+    
+    h3 {
+        font-size: 20px;
+        color: #FF8C00;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+    
+    p {
+        color: #ccc;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
+
+// Terpenes List
+.terpenes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terpene-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #222;
+    
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.terpene-name {
+    color: #fff;
+    font-weight: 600;
+}
+
+.terpene-percentage {
+    color: #FF8C00;
+    font-weight: 700;
+}
+
+// CTA Section
+.cta-section {
+    background: #0a0a0a;
+    border: 2px solid #FF8C00;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+    
+    h3 {
+        font-size: 24px;
+        color: #FF8C00;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.find-stores-btn {
+    padding: 18px 50px;
+    background: #FF8C00;
+    color: #000;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    
+    &:hover {
+        background: #FF7700;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 140, 0, 0.3);
+    }
+}
+
+// Product Details Toggle
+.product-details-toggle {
+    margin-top: 40px;
+}
+
+.toggle-details-btn {
+    background: transparent;
+    color: #FF8C00;
+    border: 2px solid #FF8C00;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    
+    &:hover {
+        background: #FF8C00;
+        color: #000;
+    }
+}
+
+.product-details-content {
+    .detail-section {
+        margin-bottom: 20px;
+    }
+}
+
+// Pricing & Inventory
+.pricing-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.price-display {
+    .price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #FF8C00;
+    }
+}
+
+.inventory-status {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    
+    &.status-in-stock {
+        background: rgba(0, 255, 0, 0.2);
+        color: #00ff00;
+        border: 1px solid #00ff00;
+    }
+    
+    &.status-low-stock {
+        background: rgba(255, 255, 0, 0.2);
+        color: #ffff00;
+        border: 1px solid #ffff00;
+    }
+    
+    &.status-out-of-stock {
+        background: rgba(255, 0, 0, 0.2);
+        color: #ff0000;
+        border: 1px solid #ff0000;
+    }
+}
+
+// Cannabinoid Info
+.cannabinoid-info {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.cannabinoid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cannabinoid-label {
+    color: #aaa;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cannabinoid-value {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+// Lab Results
+.lab-results-link {
+    color: #FF8C00;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #FF8C00;
+    display: inline-block;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #FF8C00;
+        color: #000;
+    }
+}
+
+// Product Meta
+.product-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.meta-label {
+    color: #aaa;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.meta-value {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+// Related Products Section
+.related-products {
+    padding: 80px 50px;
+    background: #0a0a0a;
+    
+    @media (max-width: 768px) {
+        padding: 60px 20px;
+    }
+}
+
+.section-title {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 60px;
+    color: #FF8C00;
+    text-transform: uppercase;
+    font-weight: 900;
+    
+    @media (max-width: 768px) {
+        font-size: 32px;
+    }
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.related-card {
+    background: #000;
+    border: 1px solid #222;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+        transform: translateY(-10px);
+        border-color: #FF8C00;
+        box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+    }
+}
+
+.related-image {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    overflow: hidden;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover img {
+        transform: scale(1.05);
+    }
+}
+
+.related-info {
+    padding: 25px;
+    
+    h4 {
+        font-size: 22px;
+        color: #FF8C00;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            
+            &:hover {
+                color: #FF7700;
+            }
+        }
+    }
+    
+    p {
+        color: #aaa;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+
+.no-products {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+    .product-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .product-image-section {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-container {
+        padding: 0 20px;
+    }
+    
+    .product-title {
+        font-size: 36px;
+    }
+    
+    .product-effects {
+        gap: 10px;
+    }
+    
+    .effect-badge {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    .detail-section {
+        padding: 20px;
+    }
+    
+    .cta-section {
+        padding: 30px 20px;
+        
+        h3 {
+            font-size: 20px;
+        }
+    }
+    
+    .find-stores-btn {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+    
+    .related-grid {
+        grid-template-columns: 1fr;
+    }
+}

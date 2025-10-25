@@ -1,0 +1,533 @@
+/**
+ * Hub Navigation Styles
+ * 
+ * Comprehensive styling for hub and spoke navigation system
+ */
+
+// Hub Navigation Container
+.hub-navigation {
+    background: linear-gradient(135deg, #1a1a1a 0%, #000 100%);
+    padding: 60px 0;
+    border-top: 2px solid $primary-color;
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+}
+
+// Hub Breadcrumb Navigation
+.hub-breadcrumb {
+    margin-bottom: 40px;
+    
+    .breadcrumb-nav {
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            
+            &.current {
+                color: $primary-color;
+                font-weight: bold;
+            }
+        }
+        
+        .breadcrumb-separator {
+            color: $medium-gray;
+            margin: 0 5px;
+        }
+        
+        .hub-home-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: $white;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid $primary-color;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: $primary-color;
+                color: $black;
+                transform: translateY(-2px);
+            }
+            
+            .hub-icon {
+                font-size: 18px;
+            }
+            
+            .hub-text {
+                font-weight: bold;
+            }
+        }
+        
+        .archive-link {
+            color: $light-gray;
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                color: $primary-color;
+                background: rgba(255, 140, 0, 0.1);
+            }
+        }
+    }
+}
+
+// Strain Hub Section
+.strain-hub-section {
+    margin-bottom: 60px;
+    
+    .hub-header {
+        text-align: center;
+        margin-bottom: 40px;
+        
+        .hub-title {
+            font-size: 36px;
+            color: $primary-color;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 900;
+            
+            @media (max-width: 768px) {
+                font-size: 28px;
+            }
+        }
+        
+        .hub-description {
+            color: $light-gray;
+            font-size: 18px;
+        }
+    }
+    
+    .spoke-products-grid {
+        .spoke-title {
+            font-size: 24px;
+            color: $white;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .spoke-product-card {
+            background: #1a1a1a;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                border-color: $primary-color;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+            }
+            
+            .product-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 15px;
+                
+                .product-title {
+                    margin: 0;
+                    flex: 1;
+                    
+                    a {
+                        color: $white;
+                        text-decoration: none;
+                        font-size: 18px;
+                        font-weight: bold;
+                        
+                        &:hover {
+                            color: $primary-color;
+                        }
+                    }
+                }
+                
+                .product-type-badge {
+                    background: $primary-color;
+                    color: $black;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+            
+            .product-details {
+                margin-bottom: 20px;
+                
+                .detail-item {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 8px;
+                    
+                    .detail-label {
+                        color: $medium-gray;
+                        font-size: 14px;
+                    }
+                    
+                    .detail-value {
+                        color: $white;
+                        font-weight: bold;
+                    }
+                    
+                    .inventory-status {
+                        padding: 2px 6px;
+                        border-radius: 3px;
+                        font-size: 12px;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                        
+                        &.inventory-in_stock {
+                            background: rgba(0, 255, 0, 0.2);
+                            color: #00ff00;
+                        }
+                        
+                        &.inventory-low_stock {
+                            background: rgba(255, 255, 0, 0.2);
+                            color: #ffff00;
+                        }
+                        
+                        &.inventory-out_of_stock {
+                            background: rgba(255, 0, 0, 0.2);
+                            color: #ff0000;
+                        }
+                    }
+                }
+            }
+            
+            .product-actions {
+                display: flex;
+                gap: 10px;
+                
+                .view-product-btn,
+                .find-near-btn {
+                    flex: 1;
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                }
+                
+                .view-product-btn {
+                    background: $primary-color;
+                    color: $black;
+                    
+                    &:hover {
+                        background: darken($primary-color, 10%);
+                        transform: translateY(-2px);
+                    }
+                }
+                
+                .find-near-btn {
+                    background: transparent;
+                    color: $primary-color;
+                    border: 1px solid $primary-color;
+                    
+                    &:hover {
+                        background: $primary-color;
+                        color: $black;
+                    }
+                }
+            }
+        }
+    }
+    
+    .no-products-message {
+        text-align: center;
+        padding: 40px;
+        color: $medium-gray;
+        
+        .browse-products-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: $primary-color;
+            color: $black;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: darken($primary-color, 10%);
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+// Product Spoke Section
+.product-spoke-section {
+    margin-bottom: 60px;
+    
+    .spoke-to-hub-connection {
+        background: #1a1a1a;
+        border: 2px solid $primary-color;
+        border-radius: 8px;
+        padding: 30px;
+        
+        .connection-header {
+            text-align: center;
+            margin-bottom: 30px;
+            
+            .connection-title {
+                font-size: 24px;
+                color: $primary-color;
+                margin-bottom: 15px;
+            }
+            
+            .strain-info {
+                .strain-name {
+                    margin: 0 0 10px 0;
+                    
+                    a {
+                        color: $white;
+                        text-decoration: none;
+                        font-size: 20px;
+                        font-weight: bold;
+                        
+                        &:hover {
+                            color: $primary-color;
+                        }
+                    }
+                }
+                
+                .strain-lineage {
+                    color: $light-gray;
+                    margin: 0;
+                }
+            }
+        }
+        
+        .hub-actions {
+            text-align: center;
+            margin-bottom: 30px;
+            
+            .view-strain-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 12px 24px;
+                background: $primary-color;
+                color: $black;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    background: darken($primary-color, 10%);
+                    transform: translateY(-2px);
+                }
+                
+                .btn-icon {
+                    font-size: 18px;
+                }
+            }
+        }
+        
+        .same-strain-products {
+            .related-products-title {
+                font-size: 20px;
+                color: $white;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            
+            .related-products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+            
+            .related-product-card {
+                background: #0a0a0a;
+                border: 1px solid #333;
+                border-radius: 4px;
+                padding: 15px;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    border-color: $primary-color;
+                    transform: translateY(-2px);
+                }
+                
+                .related-product-title {
+                    margin: 0 0 10px 0;
+                    
+                    a {
+                        color: $white;
+                        text-decoration: none;
+                        font-size: 16px;
+                        font-weight: bold;
+                        
+                        &:hover {
+                            color: $primary-color;
+                        }
+                    }
+                }
+                
+                .related-product-meta {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 14px;
+                    
+                    .product-type {
+                        color: $primary-color;
+                        font-weight: bold;
+                    }
+                    
+                    .product-price {
+                        color: $light-gray;
+                    }
+                }
+            }
+        }
+    }
+    
+    .no-strain-connection {
+        text-align: center;
+        padding: 40px;
+        color: $medium-gray;
+        background: #1a1a1a;
+        border-radius: 8px;
+    }
+}
+
+// Global Navigation Section
+.global-nav-section {
+    .nav-categories {
+        .nav-title {
+            font-size: 24px;
+            color: $white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .nav-category-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                border-color: $primary-color;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(255, 140, 0, 0.2);
+            }
+            
+            .nav-icon {
+                font-size: 24px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(255, 140, 0, 0.1);
+                border-radius: 50%;
+            }
+            
+            .nav-content {
+                display: flex;
+                flex-direction: column;
+                
+                .nav-label {
+                    color: $white;
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                }
+                
+                .nav-description {
+                    color: $light-gray;
+                    font-size: 14px;
+                }
+            }
+            
+            // Specific link styles
+            &.strain-link:hover .nav-icon {
+                background: rgba(255, 140, 0, 0.3);
+            }
+            
+            &.product-link:hover .nav-icon {
+                background: rgba(255, 140, 0, 0.3);
+            }
+            
+            &.labs-link:hover .nav-icon {
+                background: rgba(255, 140, 0, 0.3);
+            }
+            
+            &.locator-link:hover .nav-icon {
+                background: rgba(255, 140, 0, 0.3);
+            }
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+    .hub-navigation {
+        padding: 40px 0;
+        
+        .container {
+            padding: 0 15px;
+        }
+    }
+    
+    .strain-hub-section {
+        .spoke-products-grid {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+    
+    .product-spoke-section {
+        .spoke-to-hub-connection {
+            padding: 20px;
+        }
+    }
+    
+    .global-nav-section {
+        .nav-links-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

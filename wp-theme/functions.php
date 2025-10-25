@@ -64,3 +64,4 @@ require_once SKYWORKS_THEME_DIR . '/inc/customizer.php';
 require_once SKYWORKS_THEME_DIR . '/inc/acf-fields.php';
 require_once SKYWORKS_THEME_DIR . '/inc/performance.php';
 require_once SKYWORKS_THEME_DIR . '/inc/seo.php';
+require_once SKYWORKS_THEME_DIR . '/inc/data-import.php';
